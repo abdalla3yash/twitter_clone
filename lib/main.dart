@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:twitter/views/auth/loginScreen.dart';
 import 'package:twitter/views/auth/welcome_screen.dart';
 import 'package:twitter/utility/consts.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: const LoginScreen(),
     );
   }
 }

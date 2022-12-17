@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:twitter/controllers/auth_controller.dart';
 import 'package:twitter/utility/consts.dart';
 import 'package:twitter/views/home/home_screen.dart';
+import 'package:twitter/views/home/landing_screen.dart';
 import 'package:twitter/widgets/customTextField.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -80,28 +81,31 @@ class _SignupScreenState extends State<SignupScreen> {
                       valueColor: AlwaysStoppedAnimation(AppColor.primary),
                     )
                   : GestureDetector(
-                      onTap: () async {
-                        controller.isLoading(true);
-                        try {
-                          await controller
-                              .signupMethod(
-                                  context: context,
-                                  email: emailController.text,
-                                  password: passwordController.text)
-                              .then((value) {
-                            return controller.storeUserData(
-                                email: emailController.text,
-                                name: nameController.text,
-                                password: passwordController.text);
-                          }).then((value) {
-                            VxToast.show(context, msg: "SugnUp Successfully");
-                            Get.offAll(() => const HomeScreen());
-                          });
-                        } catch (e) {
-                          auth.signOut();
-                          VxToast.show(context, msg: e.toString());
-                          controller.isLoading(false);
-                        }
+                      onTap: ()
+                          // async
+                          {
+                        // controller.isLoading(true);
+                        // try {
+                        //   await controller
+                        //       .signupMethod(
+                        //           context: context,
+                        //           email: emailController.text,
+                        //           password: passwordController.text)
+                        //       .then((value) {
+                        //     return controller.storeUserData(
+                        //         email: emailController.text,
+                        //         name: nameController.text,
+                        //         password: passwordController.text);
+                        //   }).then((value) {
+                        //     VxToast.show(context, msg: "SignUp Successfully");
+                        //     Get.offAll(() => const HomeScreen());
+                        //   });
+                        // } catch (e) {
+                        //   auth.signOut();
+                        //   VxToast.show(context, msg: e.toString());
+                        //   controller.isLoading(false);
+                        // }
+                        Get.offAll(() => const LandingScreen());
                       },
                       child: Align(
                         alignment: Alignment.bottomRight,
