@@ -13,6 +13,7 @@ class TweetCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
+          color: TwitterColor.white,
           margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
           child: Padding(
             padding: EdgeInsets.fromLTRB(10, 0, 10, 0),

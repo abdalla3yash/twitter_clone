@@ -39,7 +39,7 @@ class DrawerBody extends StatelessWidget {
                   Text(
                     'Abdalla',
                     style: TextStyle(
-                        color: Palette.extraLightGray,
+                        color: TwitterColor.black,
                         fontSize: 17,
                         fontWeight: FontWeight.bold),
                   ),
@@ -49,7 +49,7 @@ class DrawerBody extends StatelessWidget {
                   Text(
                     '@abdalla',
                     style: TextStyle(
-                      color: Palette.gray,
+                      color: TwitterColor.woodsmoke_50,
                       fontSize: 15,
                     ),
                   ),
@@ -72,13 +72,13 @@ class DrawerBody extends StatelessWidget {
                       text: '82 ',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Palette.extraLightGray,
+                        color: TwitterColor.woodsmoke,
                       ),
                       children: [
                     TextSpan(
                       text: 'Following  ',
                       style: TextStyle(
-                          color: Palette.gray,
+                          color: TwitterColor.woodsmoke_50,
                           fontSize: 13,
                           fontWeight: FontWeight.normal),
                     )
@@ -91,13 +91,13 @@ class DrawerBody extends StatelessWidget {
                       text: '46 ',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Palette.extraLightGray,
+                        color: TwitterColor.woodsmoke,
                       ),
                       children: [
                     TextSpan(
                       text: 'Followers',
                       style: TextStyle(
-                          color: Palette.gray,
+                          color: TwitterColor.woodsmoke_50,
                           fontSize: 13,
                           fontWeight: FontWeight.normal),
                     )
@@ -114,10 +114,10 @@ class DrawerBody extends StatelessWidget {
       onTap: onTap,
       leading: SvgPicture.asset(
         icon,
-        color: Palette.gray,
+        color: TwitterColor.woodsmoke,
       ),
-      title:
-          Text(label, style: TextStyle(color: Palette.lightGray, fontSize: 17)),
+      title: Text(label,
+          style: TextStyle(color: TwitterColor.woodsmoke, fontSize: 17)),
     );
   }
 
@@ -125,7 +125,7 @@ class DrawerBody extends StatelessWidget {
     return TextButton(
         child: Text(
           text,
-          style: TextStyle(color: Palette.extraLightGray, fontSize: 16),
+          style: TextStyle(color: TwitterColor.woodsmoke, fontSize: 16),
         ),
         onPressed: onPressed);
   }
@@ -133,7 +133,7 @@ class DrawerBody extends StatelessWidget {
   Widget _divider() {
     return Divider(
       thickness: 0.3,
-      color: Palette.darkGray,
+      color: TwitterColor.white,
     );
   }
 
@@ -141,7 +141,7 @@ class DrawerBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Palette.background,
+        color: Palette.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -164,12 +164,6 @@ class DrawerBody extends StatelessWidget {
                 label: 'Moments',
                 icon: 'assets/icons/moments.svg',
                 onTap: () {}),
-            _drawerItem(
-                label: 'Monestisation',
-                icon: 'assets/icons/switchTimeline.svg',
-                onTap: () {
-                  print('hi');
-                }),
             _divider(),
             Padding(
                 padding: const EdgeInsets.only(left: 20),

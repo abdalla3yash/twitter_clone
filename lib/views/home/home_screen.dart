@@ -31,8 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                  decoration: BoxDecoration(
+                  margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                  decoration: const BoxDecoration(
                     color: Palette.blue,
                     shape: BoxShape.circle,
                     image: DecorationImage(
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.only(right: 10),
                 child: SvgPicture.asset(
                   'assets/icons/switchTimeline.svg',
-                  color: Palette.blue,
+                  color: TwitterColor.woodsmoke,
                   height: 25,
                   width: 25,
                 ),
