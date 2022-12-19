@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:twitter/controllers/auth_controller.dart';
 import 'package:twitter/utility/consts.dart';
 import 'package:twitter/views/home/home_screen.dart';
-import 'package:twitter/views/home/landing_screen.dart';
 import 'package:twitter/widgets/customTextField.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -105,7 +104,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         //   VxToast.show(context, msg: e.toString());
                         //   controller.isLoading(false);
                         // }
-                        Get.offAll(() => const LandingScreen());
+                        Get.offAll(() => const HomeScreen());
                       },
                       child: Align(
                         alignment: Alignment.bottomRight,

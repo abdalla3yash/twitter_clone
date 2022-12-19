@@ -1,153 +1,147 @@
-import 'package:twitter/utility/consts.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:twitter/models/tweet_model.dart';
+import 'package:twitter/utility/colors.dart';
+import 'package:twitter/views/home/tweetCard.dart';
+import 'package:twitter/views/home/drawer_pallete.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey(); // Create a key
-
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _key,
-      backgroundColor: TwitterColor.white,
-      floatingActionButton:
-          FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0.5,
-        title: Image.asset("assets/images/icon-480.png", width: 35),
-        backgroundColor: TwitterColor.white,
-        leading: IconButton(
-            onPressed: () {
-              _key.currentState!.openDrawer();
-            },
-            icon: Icon(
-              Icons.supervised_user_circle_outlined,
-              color: TwitterColor.woodsmoke,
-            )),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                  child: Icon(Icons.supervised_user_circle_outlined),
+      key: _scaffoldKey,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            floating: true,
+            snap: true,
+            elevation: 1.0,
+            backgroundColor: TwitterColor.white,
+            leading: InkWell(
+              onTap: () => _scaffoldKey.currentState!.openDrawer(),
+              child: Container(
+                margin: EdgeInsets.fromLTRB(0, 10, 10, 10),
+                decoration: BoxDecoration(
+                  color: Palette.blue,
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/CaptainJackSparrow.jpg'),
+                  ),
                 ),
-                10.heightBox,
-                "name".text.make(),
-                5.heightBox,
-                "@username"
-                    .text
-                    .fontFamily(font3)
-                    .color(TwitterColor.woodsmoke_50)
-                    .make(),
-                20.heightBox,
-                Row(
-                  children: [
-                    "500".text.make(),
-                    5.widthBox,
-                    "Following".text.color(TwitterColor.woodsmoke_50).make(),
-                    15.widthBox,
-                    "200".text.make(),
-                    5.widthBox,
-                    "Followers".text.color(TwitterColor.woodsmoke_50).make(),
-                  ],
-                )
+              ),
+            ),
+            centerTitle: true,
+            title: SvgPicture.asset(
+              'assets/icons/twitter.svg',
+              color: Palette.blue,
+              height: 25,
+              width: 25,
+            ),
+            actions: [
+              SvgPicture.asset(
+                'assets/icons/switchTimeline.svg',
+                color: Palette.blue,
+                height: 25,
+                width: 25,
+              ),
+            ],
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+                margin: EdgeInsets.only(top: 1),
+                height: 0.4,
+                color: Palette.darkGray),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return TweetCard(
+                  tweet: tweets[index],
+                );
+              },
+              childCount: tweets.length,
+            ),
+          ),
+        ],
+      ),
+      drawer: DrawerBody(),
+      bottomNavigationBar: SizedBox(
+        height: 55,
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            decoration: BoxDecoration(
+              border:
+                  Border(top: BorderSide(color: Palette.darkGray, width: 0.5)),
+            ),
+            child: BottomNavigationBar(
+              backgroundColor: Palette.white,
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+              type: BottomNavigationBarType.fixed,
+              currentIndex: _selectedIndex,
+              onTap: (int index) {
+                setState(() {
+                  _selectedIndex = index;
+                  // currentPage = pages[index];
+                });
+              },
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/icons/home.svg',
+                    color:
+                        _selectedIndex == 0 ? Palette.blue : Palette.darkGray,
+                  ),
+                  label: "",
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/icons/search.svg',
+                    color:
+                        _selectedIndex == 1 ? Palette.blue : Palette.darkGray,
+                  ),
+                  label: "",
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/icons/notification.svg',
+                    color:
+                        _selectedIndex == 2 ? Palette.blue : Palette.darkGray,
+                  ),
+                  label: "",
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/icons/message.svg',
+                    color:
+                        _selectedIndex == 3 ? Palette.blue : Palette.darkGray,
+                  ),
+                  label: "",
+                ),
               ],
-            )).box.margin(const EdgeInsets.only(left: 10)).make(),
-            10.heightBox,
-            ListTile(
-              leading: Icon(
-                Icons.person_outline,
-                size: 32,
-              ),
-              title: const Text(
-                'Profile',
-                style: TextStyle(fontSize: 18),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
             ),
-            ListTile(
-              leading: Icon(
-                Icons.topic_rounded,
-                size: 32,
-              ),
-              title: const Text(
-                'Topics',
-                style: TextStyle(fontSize: 18),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.bookmark_border_outlined,
-                size: 32,
-              ),
-              title: const Text(
-                'Bookmarks',
-                style: TextStyle(fontSize: 18),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.list_alt_rounded,
-                size: 32,
-              ),
-              title: const Text(
-                'Lists',
-                style: TextStyle(fontSize: 18),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.person_add_alt_outlined,
-                size: 32,
-              ),
-              title: const Text(
-                'Twitter Circle',
-                style: TextStyle(fontSize: 18),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            const Divider(),
-            ListTile(
-              title: const Text(
-                'Settings & Support',
-                style: TextStyle(fontSize: 18),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
+          ),
         ),
       ),
-      body: SingleChildScrollView(child: Column(
-        children: [
-          
-        ],
-      )),
+      floatingActionButton: FloatingActionButton(
+        child: SvgPicture.asset(
+          'assets/icons/writeTweet.svg',
+          color: Palette.white,
+          height: 25,
+          width: 25,
+        ),
+        onPressed: () => {},
+      ),
     );
   }
 }

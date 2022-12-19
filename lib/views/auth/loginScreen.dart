@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   .color(TwitterColor.black)
                   .fontFamily(font3)
                   .size(26)
-                  .align(TextAlign.end)
+                  .align(TextAlign.start)
                   .make(),
               10.heightBox,
               customTextField(

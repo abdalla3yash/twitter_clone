@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:twitter/controllers/auth_controller.dart';
 import 'package:twitter/utility/consts.dart';
 import 'package:twitter/views/home/home_screen.dart';
-import 'package:twitter/views/home/landing_screen.dart';
 import 'package:twitter/widgets/customTextField.dart';
 
 class PasswordScreen extends StatefulWidget {
@@ -91,7 +90,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.offAll(() => const LandingScreen());
+                            Get.offAll(() => const HomeScreen());
                           },
                           child: Container(
                               width: 70,
