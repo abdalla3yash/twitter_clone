@@ -100,8 +100,8 @@ List tweets = [
       retweetsCount: 5),
   Tweet(
       id: '7',
-      userFirstName: 'dead one',
-      userUserName: 'deadinside',
+      userFirstName: 'dead',
+      userUserName: 'deadi',
       userProfilePic: 'assets/images/CaptainJackSparrow.jpg',
       tweet:
           'I still don\'t understand why teachers used to beat the shit out of 4th graders who forgot their notebook.',
@@ -112,8 +112,8 @@ List tweets = [
       retweetsCount: 5),
   Tweet(
       id: '8',
-      userFirstName: 'rag',
-      userUserName: 'rag',
+      userFirstName: 'belw',
+      userUserName: 'belw',
       userProfilePic: 'assets/images/CaptainJackSparrow.jpg',
       tweet:
           'I still don\'t understand why teachers used to beat the shit out of 4th graders who forgot their notebook.',

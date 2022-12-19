@@ -15,7 +15,7 @@ class TweetCard extends StatelessWidget {
         Container(
           margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

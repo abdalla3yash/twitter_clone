@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:twitter/utility/consts.dart';
+import 'package:twitter/views/auth/loginScreen.dart';
 import 'package:twitter/views/auth/signup_screen.dart';
 import 'package:twitter/widgets/custom_button.dart';
 
@@ -116,7 +117,10 @@ class WelcomeScreen extends StatelessWidget {
                     .color(AppColor.primary)
                     .fontFamily(font2)
                     .size(14)
-                    .make(),
+                    .make()
+                    .onTap(() {
+                  Get.to(() => const LoginScreen());
+                }),
               ],
             ),
           ],

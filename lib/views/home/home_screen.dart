@@ -28,13 +28,16 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: TwitterColor.white,
             leading: InkWell(
               onTap: () => _scaffoldKey.currentState!.openDrawer(),
-              child: Container(
-                margin: EdgeInsets.fromLTRB(0, 10, 10, 10),
-                decoration: BoxDecoration(
-                  color: Palette.blue,
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/CaptainJackSparrow.jpg'),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                  decoration: BoxDecoration(
+                    color: Palette.blue,
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/CaptainJackSparrow.jpg'),
+                    ),
                   ),
                 ),
               ),
@@ -47,11 +50,14 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 25,
             ),
             actions: [
-              SvgPicture.asset(
-                'assets/icons/switchTimeline.svg',
-                color: Palette.blue,
-                height: 25,
-                width: 25,
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: SvgPicture.asset(
+                  'assets/icons/switchTimeline.svg',
+                  color: Palette.blue,
+                  height: 25,
+                  width: 25,
+                ),
               ),
             ],
           ),
